@@ -93,12 +93,7 @@ export default function AccessibilityPanel() {
               >
                 Destacar links
               </AccessibleButton>
-              <AccessibleButton
-                ariaPressed={settings.highlightFocus}
-                onClick={() => update({ highlightFocus: !settings.highlightFocus })}
-              >
-                Destacar foco
-              </AccessibleButton>
+              
               <AccessibleButton
                 ariaPressed={settings.reduceMotion}
                 onClick={() => update({ reduceMotion: !settings.reduceMotion })}
