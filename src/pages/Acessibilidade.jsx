@@ -2,7 +2,7 @@ import PageTitle from '../components/PageTitle'
 import AudioReader, { SpeakButton } from '../components/AudioReader'
 import ContentCard from '../components/ContentCard'
 import VideoPlayer from '../components/VideoPlayer'
-import { MEDIA, VIDEOS } from '../data/content'
+import { MEDIA } from '../data/content'
 
 const PATHS = [
   {

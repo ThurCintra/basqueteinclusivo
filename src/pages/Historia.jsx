@@ -2,7 +2,7 @@ import PageTitle from '../components/PageTitle'
 import AudioReader, { SpeakButton } from '../components/AudioReader'
 import Timeline from '../components/Timeline'
 import VideoPlayer from '../components/VideoPlayer'
-import { MEDIA, TIMELINE, VIDEOS } from '../data/content'
+import { MEDIA, TIMELINE } from '../data/content'
 
 export default function Historia() {
   return (
@@ -58,7 +58,7 @@ export default function Historia() {
             consolidou como a liga profissional mais visível do planeta.
           </p>
           <figure>
-            <img src={MEDIA.crowd.src} alt={MEDIA.crowd.alt} />
+            <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRySOjnZJ8Jsguoe3roH1vFgmzEreyOg2fToRgiB4TjkrOVpPurqp_uEXY&s=10"} alt={MEDIA.crowd.alt} />
             <figcaption>{MEDIA.crowd.alt}</figcaption>
           </figure>
         </section>

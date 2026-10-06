@@ -3,7 +3,7 @@ import PageTitle from '../components/PageTitle'
 import AudioReader, { SpeakButton } from '../components/AudioReader'
 import ContentCard from '../components/ContentCard'
 import VideoPlayer from '../components/VideoPlayer'
-import { MEDIA, NAV_ITEMS, VIDEOS } from '../data/content'
+import { MEDIA, NAV_ITEMS } from '../data/content'
 
 export default function Home() {
   return (

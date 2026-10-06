@@ -54,41 +54,6 @@ export const MEDIA = {
   },
 }
 
-export const VIDEOS = {
-  intro: {
-    type: 'youtube',
-    id: '4jGRy-njN4g',
-    title: 'Vídeo introdutório: o que é basquete',
-    description: 'Vídeo educativo com uma visão geral do basquete: objetivo do jogo, quadra e movimento da bola.',
-    transcript:
-      'O basquete é um esporte coletivo. Duas equipes de cinco pessoas tentam marcar pontos arremessando a bola na cesta do adversário. A partida acontece em uma quadra retangular. Quem faz mais pontos vence. O jogo exige passe, drible, arremesso, defesa e trabalho em equipe.',
-  },
-  history: {
-    type: 'youtube',
-    id: '7YbltzDqnYQ',
-    title: 'A origem do basquete',
-    description: 'Vídeo sobre James Naismith e a criação do basquete em Springfield, nos Estados Unidos.',
-    transcript:
-      'Em 1891, o professor James Naismith criou o basquete para que seus alunos se exercitassem em um ginásio no inverno. Ele pregou cestos de pêssego nas paredes e escreveu 13 regras. O esporte se espalhou pelas escolas, universidades e, depois, pelo mundo.',
-  },
-  dribble: {
-    type: 'youtube',
-    id: 'oUN6Ua5pG5E',
-    title: 'Demonstração de fundamentos do basquete',
-    description: 'Vídeo demonstrando drible, passe e arremesso em velocidade reduzida para estudo.',
-    transcript:
-      'O drible é bater a bola no chão com uma das mãos enquanto se desloca. O passe entrega a bola a um companheiro. O arremesso envia a bola em direção à cesta. Cada fundamento precisa de equilíbrio, visão de quadra e prática repetida.',
-  },
-  wheelchair: {
-    type: 'youtube',
-    id: '8vC4xqBkKYg',
-    title: 'Basquete em cadeira de rodas',
-    description: 'Imagens de uma partida de basquete em cadeira de rodas, destacando velocidade, passe e inclusão.',
-    transcript:
-      'No basquete em cadeira de rodas, atletas se deslocam com cadeiras esportivas. As regras principais do basquete são mantidas, com adaptações para o drible e o contato. O esporte é paralímpico e valoriza força, estratégia e trabalho em equipe.',
-  },
-}
-
 export const TIMELINE = [
   {
     year: '1891',
@@ -158,57 +123,49 @@ export const FUNDAMENTALS = [
     id: 'drible',
     title: 'Drible',
     text: 'Quicar a bola no chão com uma mão para se deslocar sem cometer passos. O drible baixo protege a bola. O drible alto é usado em velocidade.',
-    image: MEDIA.ball,
-    video: VIDEOS.dribble,
+    image: { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIIzJUC8lVVqyp5LuhEMZicWZ998fs7_mTHax8utLD_I0sil2UslU181_U&s=10' }
   },
   {
     id: 'passe',
     title: 'Passe',
     text: 'Entregar a bola a um companheiro com precisão. Um bom passe chega na altura do peito e evita interceptação.',
     image: MEDIA.team,
-    video: VIDEOS.dribble,
   },
   {
     id: 'arremesso',
     title: 'Arremesso',
     text: 'Lançar a bola na cesta com equilíbrio, alinhamento do cotovelo e acompanhamento da mão (follow-through).',
-    image: MEDIA.hoop,
-    video: VIDEOS.intro,
+    image: { src: 'https://conteudo.imguol.com.br/c/esporte/db/2021/06/23/stephen-curry-em-um-arremesso-livre-durante-partida-do-golden-state-warriors-em-maio-de-2021-1624477974585_v2_1x1.jpg'}
   },
   {
     id: 'rebote',
     title: 'Rebote',
     text: 'Pegar a bola após um arremesso errado. O rebote ofensivo dá uma nova chance. O rebote defensivo recupera a posse.',
-    image: MEDIA.dunk,
-    video: VIDEOS.intro,
+    image: {src: "https://media.brainly.com.br/image/rs:fill/w:1080/q:75/plain/https://pt-static.z-dn.net/files/daa/ddca4d511500aae0f4fda930649719a2.jpg"}
   },
   {
     id: 'defesa',
     title: 'Defesa',
     text: 'Posicionar o corpo entre a bola e a cesta, usar as mãos ativas sem agarrar e comunicar com a equipe.',
-    image: MEDIA.defense,
-    video: VIDEOS.dribble,
+    image: { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYMldOsPEwlrjUQdHRPS3AOBHvCB4SqOcZ3TqeTJx3ZVe5hVCX5HV3jQM&s=10'}
   },
   {
     id: 'bandeja',
     title: 'Bandeja',
     text: 'Arremesso em movimento próximo à cesta, geralmente após dois passos. É um fundamento de finalização.',
-    image: MEDIA.hero,
-    video: VIDEOS.dribble,
+    image: { src: 'https://media.gettyimages.com/id/91495670/pt/foto/african-basketball-player-scoring.jpg?s=612x612&w=gi&k=20&c=gnQ5ARcrk6rweC-ZFqrgPh5OHT-6esogXicD1iZd6sI='}
   },
   {
     id: 'enterrada',
     title: 'Enterrada',
     text: 'Encaixar a bola na cesta com a mão acima do aro. Exige impulsão. Não é obrigatória: muitos pontos vêm de arremessos simples.',
-    image: MEDIA.dunk,
-    video: VIDEOS.intro,
+    image: {src: 'https://s2.glbimg.com/ESNwPB1xVhTQTNVOysDyWwKiZ_s=/0x0:1024x1159/924x0/smart/filters:strip_icc()/s.glbimg.com/es/ge/f/original/2014/02/18/vincecarter_get.jpg'}
   },
   {
     id: 'movimentacao',
     title: 'Movimentação',
     text: 'Correr, cortar, bloquear (pick) e ocupar espaços. Sem a bola, o movimento cria linhas de passe e arremesso.',
-    image: MEDIA.court,
-    video: VIDEOS.dribble,
+    image: { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdeeY2QG89p5rtjuRFgC072ZxvPKAnE-2f-N3O-0MDwQ&s=10'}
   },
 ]
 
@@ -220,19 +177,19 @@ export const PLAYERS = [
         name: 'Michael Jordan',
         info: 'Estados Unidos · ala-armador · 6 títulos da NBA',
         text: 'Referência mundial de competitividade e fundamentos. Jogou principalmente pelo Chicago Bulls.',
-        image: { src: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80', alt: 'Jogador de basquete em uniforme vermelho pula em direção à cesta, em cena que evoca o estilo de jogo de Michael Jordan.' },
+        image: { src: 'https://cdn.nba.com/headshots/nba/latest/1040x760/893.png', alt: 'Jogador de basquete em uniforme vermelho pula em direção à cesta, em cena que evoca o estilo de jogo de Michael Jordan.' },
       },
       {
         name: 'Magic Johnson',
         info: 'Estados Unidos · armador · Showtime Lakers',
         text: 'Armador de 2,06 m, famoso por passes de visão ampla e liderança. Também atuou na luta contra o HIV com educação pública.',
-        image: { src: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80', alt: 'Jogadores de basquete em treino de passe, ilustrando o jogo coletivo associado a Magic Johnson.' },
+        image: { src: 'https://s2.glbimg.com/TonGf31_jryxsEwrRz_CPDCClog=/640x424/i.glbimg.com/og/ig/infoglobo1/f/original/2021/11/08/magicj.jpg', alt: 'Jogadores de basquete em treino de passe, ilustrando o jogo coletivo associado a Magic Johnson.' },
       },
       {
         name: 'Oscar Schmidt',
         info: 'Brasil · ala · maior cestinha das Olimpíadas',
         text: 'Ídolo brasileiro. Recusou a NBA para defender a seleção. Famoso pelo arremesso de longa distância.',
-        image: { src: 'https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=800&q=80', alt: 'Quadra de basquete iluminada, representando a carreira internacional de Oscar Schmidt.' },
+        image: { src: 'https://folhadesabara.com.br/images/noticias/56541/1ee69b2368a7895737c717a46ddc08be.webp', alt: 'Quadra de basquete iluminada, representando a carreira internacional de Oscar Schmidt.' },
       },
     ],
   },
@@ -243,19 +200,19 @@ export const PLAYERS = [
         name: 'LeBron James',
         info: 'Estados Unidos · ala · múltiplos títulos e MVPs',
         text: 'Atleta de longevidade rara, combina força, passe e leitura de jogo. Também atua em projetos educacionais.',
-        image: { src: 'https://images.unsplash.com/photo-1608245444365-808bc61c2eee?auto=format&fit=crop&w=800&q=80', alt: 'Atleta de basquete salta para uma enterrada, representando o atletismo de LeBron James.' },
+        image: { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHURNA-gAmRtl3cdZriLpUZUNA2pTxnKJROnJ99JDxrSDmyR8OAh-hBBo&s=10', alt: 'Atleta de basquete salta para uma enterrada, representando o atletismo de LeBron James.' },
       },
       {
         name: 'A’ja Wilson',
         info: 'Estados Unidos · pivô · WNBA',
         text: 'Uma das maiores jogadoras da WNBA, destaque em defesa, rebote e liderança no Las Vegas Aces.',
-        image: { src: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80', alt: 'Jogadora de basquete protege a bola durante uma disputa, ilustrando o basquete feminino de alto nível.' },
+        image: { src: 'https://www.usab.com/imgproxy/BMYF1vsqEfR4ykyQ_BtsXeOS8Y-LzFj4L6R0nhvY_U0/rs:fit:1200:630:0/g:ce/q:90/aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3VzYWItY29tLXByb2QvdXBsb2FkLzIwMjQvMDcvMjIvYWM0ZDEzZTYtMjQzZS00YTQ5LThhYmEtYWUzZjAzMDFjNTc5LnBuZw.png', alt: 'Jogadora de basquete protege a bola durante uma disputa, ilustrando o basquete feminino de alto nível.' },
       },
       {
         name: 'Luka Dončić',
         info: 'Eslovênia · armador · Euroliga e NBA',
         text: 'Destaca-se por visão de passe, arremesso e controle de ritmo. Começou no basquete europeu profissional muito jovem.',
-        image: { src: 'https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=80', alt: 'Bola de basquete em close, símbolo do controle de jogo de armadores como Luka Dončić.' },
+        image: { src: 'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/rockcms/2025-07/250730-luka-doncic-mb-1424-fa4a00.jpg', alt: 'Bola de basquete em close, símbolo do controle de jogo de armadores como Luka Dončić.' },
       },
     ],
   },
@@ -266,19 +223,19 @@ export const PLAYERS = [
         name: 'Hortência Marcari',
         info: 'Brasil · armadora · medalha de prata olímpica',
         text: 'Uma das maiores jogadoras da história do Brasil. Liderou gerações do basquete feminino.',
-        image: { src: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=80', alt: 'Ginásio cheio para uma partida de basquete, representando o impacto popular de Hortência.' },
+        image: { src: 'https://s2-ge.glbimg.com/Bk4Ai4Nmo3zmMSKo7o5jf2nbAQs=/0x0:1200x1447/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2020/7/e/gBYLQPTo2XsbgJ9xss6Q/basquete-anos-1990-2-hortencia.jpg', alt: 'Ginásio cheio para uma partida de basquete, representando o impacto popular de Hortência.' },
       },
       {
         name: 'Paula Gonçalves “Magic Paula”',
         info: 'Brasil · armadora · seleção brasileira',
         text: 'Companheira de geração de Hortência. Armadora de leitura rápida e títulos internacionais.',
-        image: { src: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80', alt: 'Equipe de basquete troca passes em treino, ilustrando o jogo coletivo de Magic Paula.' },
+        image: { src: 'https://admin.cob.org.br/uploads/221_411ca257d7.jpg', alt: 'Equipe de basquete troca passes em treino, ilustrando o jogo coletivo de Magic Paula.' },
       },
       {
         name: 'Nenê Hilário',
         info: 'Brasil · pivô · longa carreira na NBA',
         text: 'Pivô brasileiro com mais de uma década na NBA, conhecido por defesa, rebote e constância.',
-        image: { src: 'https://images.unsplash.com/photo-1518063319789-7217e6706b04?auto=format&fit=crop&w=800&q=80', alt: 'Aro e tabela de basquete vistos de baixo, representando a atuação de pivôs próximos à cesta.' },
+        image: { src: 'https://a.espncdn.com/i/headshots/nba/players/full/1713.png', alt: 'Aro e tabela de basquete vistos de baixo, representando a atuação de pivôs próximos à cesta.' },
       },
     ],
   },
