@@ -3,6 +3,9 @@ import AudioReader from '../components/AudioReader'
 import ContentCard from '../components/ContentCard'
 import { MEDIA, RULES } from '../data/content'
 
+// Página de regras do basquete.
+// Exibe uma imagem da quadra, segue com os cards de cada regra principal
+// e encerra com um resumo em frase simples para facilitar a compreensão.
 export default function Regras() {
   return (
     <main id="conteudo-principal" className="site-main page" tabIndex={-1}>

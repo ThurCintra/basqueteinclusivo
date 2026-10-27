@@ -4,6 +4,8 @@ import ContentCard from '../components/ContentCard'
 import VideoPlayer from '../components/VideoPlayer'
 import { MEDIA } from '../data/content'
 
+// Página dedicada à inclusão no esporte e na web.
+// Aqui o projeto explica como o basquete pode ser acessível para diferentes perfis e como o próprio site respeita esse princípio.
 const PATHS = [
   {
     title: 'Deficiência visual',

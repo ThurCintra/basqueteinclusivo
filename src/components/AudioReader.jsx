@@ -1,6 +1,8 @@
 import { useAccessibility } from '../context/AccessibilityContext'
 import AccessibleButton from './AccessibleButton'
 
+// Botão reutilizável para ler uma frase específica em voz alta.
+// Útil quando o texto é uma explicação curta ou um trecho destacado em uma página.
 export function SpeakButton({ text, label = 'Ouvir' }) {
   const { speak } = useAccessibility()
   return (
@@ -10,6 +12,8 @@ export function SpeakButton({ text, label = 'Ouvir' }) {
   )
 }
 
+// Componente de leitura completa da página.
+// Coleta o conteúdo principal e usa a Web Speech API para narrar o texto para o usuário.
 export default function AudioReader({ compact = false }) {
   const { speakPage, pauseSpeech, resumeSpeech, stopSpeech, speechStatus } = useAccessibility()
   const statusLabel =

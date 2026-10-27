@@ -1,3 +1,9 @@
+// Arquivo central de dados estáticos do projeto Basquete Inclusivo.
+// Todos os conteúdos textuais, imagens e metadados das páginas são definidos aqui,
+// mantendo os componentes e páginas limpos e focados na apresentação.
+
+// Itens de navegação usados tanto no Navbar quanto no Footer e na página Home.
+// Cada item tem a rota (to), o rótulo de texto (label) e um ícone emoji acessível.
 export const NAV_ITEMS = [
   { to: '/', label: 'Início', icon: '🏀' },
   { to: '/historia', label: 'História', icon: '📖' },
@@ -7,6 +13,9 @@ export const NAV_ITEMS = [
   { to: '/acessibilidade', label: 'Basquete e Inclusão', icon: '♿' },
 ]
 
+// Mapa de imagens usadas no projeto.
+// Cada chave possui { src, alt } — o 'alt' é sempre descritivo para acessibilidade.
+// Imagens de domínio público (Wikimedia), Unsplash (uso editorial educativo) e sites de esporte.
 export const MEDIA = {
   hero: {
     src: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1400&q=80',
@@ -54,6 +63,8 @@ export const MEDIA = {
   },
 }
 
+// Linha do tempo cronológica do basquete usada na página História.
+// Cada item tem: year (período), title, text e image (referência ao objeto MEDIA).
 export const TIMELINE = [
   {
     year: '1891',
@@ -105,6 +116,8 @@ export const TIMELINE = [
   },
 ]
 
+// Regras principais do basquete usadas na página Regras.
+// Cada regra tem: icon (emoji), title e text em linguagem simples e acessível.
 export const RULES = [
   { icon: '5️⃣', title: 'Número de jogadores', text: 'Cada equipe joga com 5 pessoas em quadra. Há reservas no banco. Trocas são permitidas.' },
   { icon: '⏱️', title: 'Duração da partida', text: 'Na NBA são 4 quartos de 12 minutos. Em regras FIBA, 4 quartos de 10 minutos. Se empatar, há prorrogação.' },
@@ -118,6 +131,8 @@ export const RULES = [
   { icon: '🛡️', title: 'Defesa e ataque', text: 'No ataque, o time com a bola tenta criar uma cesta. Na defesa, o time sem a bola tenta impedir a cesta e recuperar a bola.' },
 ]
 
+// Fundamentos (habilidades básicas) do basquete usados na página Fundamentos.
+// Cada item tem: id (âncora HTML), title, text descritivo e image { src, alt }.
 export const FUNDAMENTALS = [
   {
     id: 'drible',
@@ -169,6 +184,8 @@ export const FUNDAMENTALS = [
   },
 ]
 
+// Jogadores de referência, agrupados por categoria (históricos, atuais, brasileiros).
+// Cada pessoa tem: name, info (posição/títulos), text biográfico e image { src, alt }.
 export const PLAYERS = [
   {
     group: 'Jogadores históricos',
@@ -241,6 +258,8 @@ export const PLAYERS = [
   },
 ]
 
+// Principais competições de basquete mencionadas na página de Jogadores.
+// Cada item tem: title (nome da competição) e text (descrição breve).
 export const COMPETITIONS = [
   { title: 'NBA', text: 'Principal liga profissional dos Estados Unidos e Canadá. Tem temporada regular, playoffs e finais. A WNBA é a liga feminina correspondente.' },
   { title: 'NBB', text: 'Novo Basquete Brasil: principal campeonato profissional masculino do país, organizado pela LNB.' },

@@ -1,8 +1,12 @@
 import { useAccessibility } from '../context/AccessibilityContext'
 import AccessibleButton from './AccessibleButton'
 
+// Banner de boas-vindas exibido na primeira visita ao site.
+// Informa ao usuário sobre os recursos de acessibilidade disponíveis.
+// Após clicar em "Entendi", a preferência é salva no localStorage e o banner não aparece mais.
 export default function WelcomeBanner() {
   const { welcomeOpen, dismissWelcome } = useAccessibility()
+  // Não renderiza nada se o banner já foi dispensado
   if (!welcomeOpen) return null
 
   return (

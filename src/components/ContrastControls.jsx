@@ -1,6 +1,8 @@
 import { THEMES, useAccessibility } from '../context/AccessibilityContext'
 import AccessibleButton from './AccessibleButton'
 
+// Troca os temas visuais do site.
+// Cada tema melhora o contraste para diferentes necessidades de leitura.
 export default function ContrastControls({ ghost = false }) {
   const { settings, update } = useAccessibility()
   const variant = ghost ? 'ghost' : 'secondary'

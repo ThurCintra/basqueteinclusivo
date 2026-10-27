@@ -4,6 +4,9 @@ import Timeline from '../components/Timeline'
 import VideoPlayer from '../components/VideoPlayer'
 import { MEDIA, TIMELINE } from '../data/content'
 
+// Página de história do basquete.
+// Conta a origem do esporte, sua evolução, expansão mundial, chegada ao Brasil
+// e exibe uma linha do tempo cronológica visual com suporte a leitura em voz alta.
 export default function Historia() {
   return (
     <main id="conteudo-principal" className="site-main page" tabIndex={-1}>

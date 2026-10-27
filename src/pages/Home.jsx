@@ -5,6 +5,8 @@ import ContentCard from '../components/ContentCard'
 import VideoPlayer from '../components/VideoPlayer'
 import { MEDIA, NAV_ITEMS } from '../data/content'
 
+// Página inicial do projeto.
+// Apresenta uma visão geral do basquete e guia o visitante para os demais tópicos do site.
 export default function Home() {
   return (
     <main id="conteudo-principal" className="site-main page" tabIndex={-1}>

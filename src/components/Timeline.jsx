@@ -1,5 +1,10 @@
 import { SpeakButton } from './AudioReader'
 
+// Linha do tempo cronológica de eventos históricos do basquete.
+// Renderiza uma lista ordenada (<ol>) de eventos, cada um com ano, título, texto e imagem opcional.
+// Cada item possui um botão para ouvir o conteúdo em voz alta.
+// Props:
+//   items — array de { year, title, text, image?: { src, alt } }
 export default function Timeline({ items }) {
   return (
     <ol className="timeline">

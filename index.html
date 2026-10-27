@@ -1,17 +1,28 @@
 <!doctype html>
+<!-- lang="pt-BR" definido aqui como padrão. O AccessibilityContext reforça isso no JS. -->
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <!-- Ícone da aba do navegador -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Garante responsividade em dispositivos móveis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Meta description para SEO e leitores de tela que exibem a descrição da página -->
     <meta
       name="description"
       content="Basquete Inclusivo: site didático sobre basquete com recursos de acessibilidade para pessoas com deficiência visual, auditiva, motora e cognitiva."
     />
+    <!-- Título padrão da aba; cada página atualiza dinamicamente via componente PageTitle -->
     <title>Basquete Inclusivo — Basquete acessível para todas as pessoas</title>
+    <!-- Fontes premium do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <!-- Elemento raiz onde o React monta toda a aplicação -->
     <div id="root"></div>
+    <!-- Ponto de entrada do JavaScript: o Vite processa este módulo e carrega o bundle -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

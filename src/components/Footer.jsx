@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { NAV_ITEMS } from '../data/content'
 
+// Rodapé do site, exibido em todas as páginas via Layout.
+// Contém três seções: sobre o projeto, links de navegação e créditos/acessibilidade.
 export default function Footer() {
   return (
     <footer className="site-footer">

@@ -3,6 +3,9 @@ import AudioReader, { SpeakButton } from '../components/AudioReader'
 import VideoPlayer from '../components/VideoPlayer'
 import { FUNDAMENTALS } from '../data/content'
 
+// Página de fundamentos do basquete.
+// Itera sobre os fundamentos do array FUNDAMENTALS e renderiza uma seção por habilidade,
+// com texto explicativo, imagem e botão de leitura em voz alta para cada item.
 export default function Fundamentos() {
   return (
     <main id="conteudo-principal" className="site-main page" tabIndex={-1}>

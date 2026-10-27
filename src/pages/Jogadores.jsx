@@ -4,6 +4,9 @@ import ContentCard from '../components/ContentCard'
 import PlayerCard from '../components/PlayerCard'
 import { COMPETITIONS, PLAYERS } from '../data/content'
 
+// Página de jogadores e competições.
+// Exibe grupos de jogadores (históricos, atuais e brasileiros) usando PlayerCard
+// e lista as principais competições do basquete usando ContentCard.
 export default function Jogadores() {
   return (
     <main id="conteudo-principal" className="site-main page" tabIndex={-1}>

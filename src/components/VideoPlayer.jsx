@@ -1,18 +1,34 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import AccessibleButton from './AccessibleButton'
 
+// Player de vídeo acessível com controles personalizados.
+// Suporta dois modos:
+//   - YouTube: exibe um iframe da API youtube-nocookie (sem cookies de rastreamento)
+//   - Vídeo nativo: exibe <video> com controles customizados (play/pause, seek, volume, tela cheia)
+// Sempre exibe uma transcrição textual colapsável para acessibilidade.
+// Props:
+//   video — objeto com: type, title, description, transcript
+//           Se type === 'youtube': id (ID do vídeo YouTube)
+//           Se tipo nativo: src, mime, poster, captions
 export default function VideoPlayer({ video }) {
-  const vidRef = useRef(null)
-  const id = useId()
-  const [playing, setPlaying] = useState(false)
-  const [muted, setMuted] = useState(false)
-  const [progress, setProgress] = useState(0)
-  const [volume, setVolume] = useState(1)
+  const vidRef = useRef(null) // Referência ao elemento <video> nativo
+  const id = useId()          // ID único para os labels de progresso e volume
+
+  // Estado dos controles do player nativo
+  const [playing, setPlaying] = useState(false) // Se o vídeo está reproduzindo
+  const [muted, setMuted] = useState(false)      // Se o áudio está silenciado
+  const [progress, setProgress] = useState(0)   // Progresso em % (0–100)
+  const [volume, setVolume] = useState(1)        // Volume de 0 a 1
+
+  // Detecta o tipo de vídeo para escolher o modo de renderização
   const isYoutube = video.type === 'youtube'
 
+  // Sincroniza o estado de progresso e play/pause com os eventos do elemento <video>.
+  // Não roda para vídeos YouTube (controlados pelo iframe do YouTube).
   useEffect(() => {
     const el = vidRef.current
     if (!el) return undefined
+    // Atualiza a barra de progresso conforme o vídeo avança
     const onTime = () => {
       if (el.duration) setProgress((el.currentTime / el.duration) * 100)
     }
@@ -21,6 +37,7 @@ export default function VideoPlayer({ video }) {
     el.addEventListener('timeupdate', onTime)
     el.addEventListener('play', onPlay)
     el.addEventListener('pause', onPause)
+    // Limpa os listeners ao desmontar para evitar vazamento de memória
     return () => {
       el.removeEventListener('timeupdate', onTime)
       el.removeEventListener('play', onPlay)
@@ -28,6 +45,7 @@ export default function VideoPlayer({ video }) {
     }
   }, [isYoutube])
 
+  // Alterna entre reproduzir e pausar o vídeo
   const togglePlay = () => {
     const el = vidRef.current
     if (!el) return
@@ -35,12 +53,14 @@ export default function VideoPlayer({ video }) {
     else el.pause()
   }
 
+  // Pula para a posição correspondente ao valor da barra de progresso (0–100)
   const seek = (value) => {
     const el = vidRef.current
     if (!el?.duration) return
     el.currentTime = (Number(value) / 100) * el.duration
   }
 
+  // Ajusta o volume (0–1) e silencia automaticamente quando volume = 0
   const changeVolume = (value) => {
     const el = vidRef.current
     const v = Number(value)
@@ -52,6 +72,7 @@ export default function VideoPlayer({ video }) {
     }
   }
 
+  // Alterna mudo/com áudio sem alterar o nível de volume configurado
   const toggleMute = () => {
     const el = vidRef.current
     if (!el) return
@@ -59,6 +80,7 @@ export default function VideoPlayer({ video }) {
     setMuted(el.muted)
   }
 
+  // Entra ou sai do modo tela cheia usando o container do vídeo
   const fullscreen = () => {
     const wrap = vidRef.current?.parentElement
     if (!wrap) return
@@ -66,6 +88,7 @@ export default function VideoPlayer({ video }) {
     else wrap.requestFullscreen?.()
   }
 
+  // Avança ou retrocede o vídeo em um número de segundos, respeitando os limites [0, duração]
   const skip = (seconds) => {
     const el = vidRef.current
     if (!el) return

@@ -1,3 +1,5 @@
+// Botão universal do projeto.
+// Centraliza o visual e os atributos acessíveis dos botões usados no site.
 export default function AccessibleButton({
   children,
   icon,

@@ -1,6 +1,8 @@
 import { useAccessibility } from '../context/AccessibilityContext'
 import AccessibleButton from './AccessibleButton'
 
+// Controle de tamanho da fonte.
+// Permite aumentar, diminuir e resetar a escala textual do site.
 export default function FontControls({ ghost = false }) {
   const { increaseFont, decreaseFont, resetFont, settings } = useAccessibility()
   const variant = ghost ? 'ghost' : 'secondary'

@@ -8,6 +8,8 @@ import Home from './pages/Home'
 import Jogadores from './pages/Jogadores'
 import Regras from './pages/Regras'
 
+// Componente principal da aplicação.
+// Define as rotas do site e garante que todas as páginas compartilhem o mesmo layout e o contexto de acessibilidade.
 export default function App() {
   return (
     <AccessibilityProvider>
