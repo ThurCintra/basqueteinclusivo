@@ -1,0 +1,6 @@
+/* Estilos do Basquete Inclusivo, em ordem:
+   tokens (cores e temas) → base (reset e tipografia) → layout (estrutura) → componentes */
+@import './tokens.css';
+@import './base.css';
+@import './layout.css';
+@import './components.css';

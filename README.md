@@ -1,16 +1,68 @@
-# React + Vite
+# Basquete Inclusivo
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Site educativo sobre basquete com foco em **acessibilidade digital**: leitura em voz alta, controle do tamanho da fonte, cinco temas de cor (incluindo alto contraste), navegação completa pelo teclado e textos alternativos nas imagens.
 
-Currently, two official plugins are available:
+Demo: https://basqueteinclusivo.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![Página inicial](docs/screenshots/inicio.png)
 
-## React Compiler
+## Páginas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Início**: o que é o basquete, números do jogo e atalhos para os temas
+- **História**: origem, expansão e linha do tempo
+- **Regras**: a quadra e as regras principais
+- **Fundamentos**: drible, passe, arremesso, rebote, defesa, bandeja, enterrada e movimentação
+- **Jogadores e Competições**: atletas históricos, atuais e brasileiros, e os principais torneios
+- **Basquete e Inclusão**: basquete em cadeira de rodas e adaptações
 
-## Expanding the Oxlint configuration
+## Acessibilidade
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+| Recurso | Onde |
+| --- | --- |
+| Ler a página inteira (pausar, continuar, parar) e botão **Ouvir** em cada bloco | Barra do topo, painel e cards |
+| Fonte de 87,5% a 175% | Barra do topo e painel |
+| Temas: padrão, escuro, alto contraste, alto contraste preto, escala de cinza | Painel (modo escuro também na barra) |
+| Destacar links, destacar foco, reduzir animações | Painel |
+| Pular para o conteúdo, foco visível, menu que fecha com Esc | Todas as páginas |
+| Preferências salvas no navegador (`localStorage`) | Automático |
+
+Nenhum áudio toca sozinho. A redução de animações também segue a preferência do sistema operacional.
+
+## Como rodar
+
+```bash
+npm install
+npm run dev     # http://localhost:5173
+npm run build   # gera a pasta dist/
+npm run lint
+```
+
+## Estrutura
+
+```
+src/
+├── App.jsx                       rotas
+├── context/
+│   └── AccessibilityContext.jsx  preferências, fonte, tema e leitura em voz alta
+├── data/                         todo o conteúdo do site, separado por assunto
+│   ├── navigation.js             páginas do menu
+│   ├── media.js                  imagens (src + alt)
+│   ├── timeline.js  rules.js  fundamentals.js  players.js
+│   └── themes.js                 lista de temas
+├── components/
+│   ├── layout/                   Layout, Header, A11yBar, Page, Footer, WelcomeBanner
+│   ├── a11y/                     painel, leitura em voz alta, fonte e temas
+│   └── ui/                       Button, Icon, Figure, Section, cards e linha do tempo
+├── pages/                        uma página por rota
+└── styles/
+    ├── tokens.css                cores de cada tema
+    ├── base.css                  reset, tipografia e utilitários
+    ├── layout.css                cabeçalho, barra, páginas e rodapé
+    └── components.css            botões, cards, linha do tempo e painel
+```
+
+Para mudar um texto ou imagem, edite o arquivo em `src/data/`. Para mudar as cores de um tema, edite `src/styles/tokens.css`.
+
+## Tecnologias
+
+React 19, React Router 7, Vite e ícones [Lucide](https://lucide.dev).

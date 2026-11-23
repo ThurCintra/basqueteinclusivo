@@ -1,0 +1,176 @@
+/* ═══════════════════════════════════════════════════════════════
+   TOKENS — cores, tipografia e medidas de cada tema
+   O tema ativo vem de <html data-theme="..."> (AccessibilityContext).
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --font-scale: 1;
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-heading: 'Outfit', 'Inter', 'Segoe UI', system-ui, sans-serif;
+
+  /* superfícies */
+  --bg: #faf6f0;
+  --bg-soft: #f3ece2;
+  --surface: #ffffff;
+  --surface-2: #fbf7f2;
+  --line: #e6dccf;
+  --line-strong: #cfc1ae;
+
+  /* texto */
+  --text: #1b1712;
+  --text-2: #463d33;
+  --muted: #6b6157;
+
+  /* marca: laranja da bola + azul-marinho da quadra */
+  --brand: #c2410c;         /* botões e destaques (contraste 5.2:1 com branco) */
+  --brand-strong: #9a3412;  /* texto laranja sobre fundo claro */
+  --brand-soft: #ffedd5;
+  --on-brand: #ffffff;
+  --navy: #0f2238;
+  --navy-2: #173352;
+  --on-navy: #ffffff;
+  --on-navy-muted: #b7c6d8;
+  --ball: #e8590c;
+
+  --link: #1d4ed8;
+  --link-hover: #1e3a8a;
+  --focus: #1d4ed8;
+  --ok: #15803d;
+
+  /* efeitos */
+  --shadow-sm: 0 1px 2px rgba(27, 23, 18, 0.06), 0 2px 6px rgba(27, 23, 18, 0.05);
+  --shadow: 0 10px 30px -12px rgba(27, 23, 18, 0.22);
+  --hero-bg: radial-gradient(1200px 400px at 85% -10%, #ffe1c7 0%, transparent 60%),
+    linear-gradient(180deg, #fff7ee 0%, var(--bg) 100%);
+
+  /* medidas */
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --tap: 2.75rem;
+  --max: 76rem;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  color-scheme: light;
+}
+
+/* ── Modo escuro ─────────────────────────────────────────────── */
+html[data-theme='dark'] {
+  --bg: #0b1220;
+  --bg-soft: #0f1829;
+  --surface: #121c2e;
+  --surface-2: #16233a;
+  --line: #243451;
+  --line-strong: #33496d;
+  --text: #eef2f7;
+  --text-2: #c9d4e2;
+  --muted: #94a3b8;
+  --brand: #fb923c;
+  --brand-strong: #fdba74;
+  --brand-soft: #2b1c12;
+  --on-brand: #1b0f06;
+  --navy: #070d18;
+  --navy-2: #0e1a2e;
+  --ball: #f97316;
+  --link: #93c5fd;
+  --link-hover: #bfdbfe;
+  --focus: #fbbf24;
+  --ok: #4ade80;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.7);
+  --hero-bg: radial-gradient(1000px 380px at 85% -10%, rgba(249, 115, 22, 0.18) 0%, transparent 60%),
+    linear-gradient(180deg, #0e1729 0%, var(--bg) 100%);
+  color-scheme: dark;
+}
+
+/* ── Alto contraste (claro): preto no branco, amarelo nos destaques ── */
+html[data-theme='high-contrast'] {
+  --bg: #ffffff;
+  --bg-soft: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #ffffff;
+  --line: #000000;
+  --line-strong: #000000;
+  --text: #000000;
+  --text-2: #000000;
+  --muted: #000000;
+  --brand: #000000;
+  --brand-strong: #000000;
+  --brand-soft: #ffff00;
+  --on-brand: #ffff00;
+  --navy: #000000;
+  --navy-2: #000000;
+  --on-navy: #ffff00;
+  --on-navy-muted: #ffffff;
+  --ball: #000000;
+  --link: #0000cc;
+  --link-hover: #000080;
+  --focus: #d4006a;
+  --ok: #000000;
+  --shadow-sm: none;
+  --shadow: none;
+  --hero-bg: #ffffff;
+  color-scheme: light;
+}
+
+/* ── Alto contraste preto: branco no preto ───────────────────── */
+html[data-theme='high-contrast-bw'] {
+  --bg: #000000;
+  --bg-soft: #000000;
+  --surface: #000000;
+  --surface-2: #000000;
+  --line: #ffffff;
+  --line-strong: #ffffff;
+  --text: #ffffff;
+  --text-2: #ffffff;
+  --muted: #ffffff;
+  --brand: #ffffff;
+  --brand-strong: #ffff00;
+  --brand-soft: #000000;
+  --on-brand: #000000;
+  --navy: #000000;
+  --navy-2: #000000;
+  --on-navy: #ffffff;
+  --on-navy-muted: #ffffff;
+  --ball: #ffffff;
+  --link: #ffff00;
+  --link-hover: #ffffff;
+  --focus: #00ffff;
+  --ok: #00ff00;
+  --shadow-sm: none;
+  --shadow: none;
+  --hero-bg: #000000;
+  color-scheme: dark;
+}
+
+/* ── Escala de cinza ─────────────────────────────────────────── */
+html[data-theme='grayscale'] {
+  --bg: #f2f2f2;
+  --bg-soft: #e9e9e9;
+  --surface: #ffffff;
+  --surface-2: #f7f7f7;
+  --line: #cfcfcf;
+  --line-strong: #a8a8a8;
+  --text: #111111;
+  --text-2: #333333;
+  --muted: #555555;
+  --brand: #2b2b2b;
+  --brand-strong: #111111;
+  --brand-soft: #e5e5e5;
+  --on-brand: #ffffff;
+  --navy: #1a1a1a;
+  --navy-2: #2a2a2a;
+  --on-navy-muted: #cccccc;
+  --ball: #555555;
+  --link: #111111;
+  --link-hover: #000000;
+  --focus: #000000;
+  --ok: #333333;
+  --hero-bg: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+  color-scheme: light;
+}
+
+html[data-theme='grayscale'] img {
+  filter: grayscale(1);
+}

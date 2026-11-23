@@ -1,0 +1,329 @@
+/* ═══════════════════════════════════════════════════════════════
+   LAYOUT — cabeçalho, barra de acessibilidade, aviso, páginas e rodapé
+   ═══════════════════════════════════════════════════════════════ */
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.site-main {
+  flex: 1;
+}
+
+/* ── Aviso da primeira visita ───────────────────────────────── */
+.welcome {
+  background: var(--brand-soft);
+  border-bottom: 1px solid var(--line);
+}
+
+.welcome-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 0.75rem;
+}
+
+.welcome p {
+  margin: 0;
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.welcome-icon {
+  flex-shrink: 0;
+  color: var(--brand-strong);
+}
+
+/* ── Cabeçalho ──────────────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--navy);
+  color: var(--on-navy);
+  border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 12%, transparent);
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 4.25rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--on-navy);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.brand:hover {
+  color: var(--on-navy);
+}
+
+.brand-mark {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.brand-text {
+  display: grid;
+  line-height: 1.15;
+}
+
+.brand-text strong {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--on-navy);
+}
+
+.brand-text small {
+  font-size: 0.75rem;
+  color: var(--on-navy-muted);
+}
+
+.site-nav {
+  margin-left: auto;
+}
+
+.site-nav ul {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.15rem;
+  list-style: none;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: var(--tap);
+  padding: 0.45rem 0.75rem;
+  white-space: nowrap;
+  border-radius: 999px;
+  color: var(--on-navy-muted);
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.site-nav a:hover {
+  color: var(--on-navy);
+  background: color-mix(in srgb, var(--on-navy) 10%, transparent);
+}
+
+.site-nav a[aria-current='page'] {
+  color: var(--on-brand);
+  background: var(--brand);
+}
+
+.site-header .menu-toggle {
+  display: none;
+  margin-left: auto;
+  color: var(--on-navy);
+  border-color: color-mix(in srgb, var(--on-navy) 30%, transparent);
+}
+
+/* No desktop o menu é só texto; os ícones aparecem na lista do celular */
+.site-nav a .icon {
+  display: none;
+}
+
+/* Menu vira lista suspensa em telas médias e pequenas */
+@media (max-width: 75rem) {
+  .site-header .menu-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav a .icon {
+    display: inline-block;
+  }
+
+  .site-nav {
+    position: absolute;
+    inset: 100% 0 auto;
+    display: none;
+    background: var(--navy);
+    border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 15%, transparent);
+    box-shadow: var(--shadow);
+  }
+
+  .site-nav.is-open {
+    display: block;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5rem var(--gutter) 1rem;
+  }
+
+  .site-nav a {
+    width: 100%;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .brand-text small {
+    display: none;
+  }
+}
+
+/* ── Barra de atalhos de acessibilidade ─────────────────────── */
+.a11y-bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.a11y-bar-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding-block: 0.55rem;
+}
+
+.a11y-bar-sep {
+  width: 1px;
+  height: 1.6rem;
+  background: var(--line);
+}
+
+.a11y-bar-more {
+  margin-left: auto;
+}
+
+/* No celular a barra fica só com leitura e fonte; o resto está no botão flutuante Acessibilidade */
+@media (max-width: 40rem) {
+  .a11y-bar-sep,
+  .a11y-bar .chip,
+  .a11y-bar-row > .btn {
+    display: none;
+  }
+}
+
+/* ── Cabeçalho de cada página ───────────────────────────────── */
+.page-hero {
+  background: var(--hero-bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.page-hero-grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.page-hero-grid.has-media {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+}
+
+.page-hero-copy {
+  max-width: 46rem;
+}
+
+.page-hero--home h1 {
+  font-size: clamp(2.5rem, 6vw, 4.2rem);
+}
+
+@media (max-width: 52rem) {
+  .page-hero-grid.has-media {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-strong);
+}
+
+.kicker::before {
+  content: '';
+  width: 1.75rem;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--brand);
+}
+
+.lede {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  line-height: 1.6;
+  color: var(--text);
+  max-width: 62ch;
+}
+
+.page-body {
+  padding-block: 1rem 5rem;
+}
+
+/* ── Rodapé ─────────────────────────────────────────────────── */
+.site-footer {
+  background: var(--navy);
+  color: var(--on-navy-muted);
+  padding-top: 3.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.site-footer h2 {
+  font-size: 1.05rem;
+  color: var(--on-navy);
+  margin-bottom: 1rem;
+}
+
+.site-footer p,
+.site-footer li {
+  color: var(--on-navy-muted);
+  font-size: 0.95rem;
+}
+
+.site-footer ul {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.site-footer a {
+  color: var(--on-navy);
+}
+
+.footer-legal {
+  margin: 3rem auto 0;
+  padding-block: 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--on-navy) 12%, transparent);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 48rem) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

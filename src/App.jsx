@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import Layout from './components/Layout'
+import Layout from './components/layout/Layout'
 import { AccessibilityProvider } from './context/AccessibilityContext'
 import Acessibilidade from './pages/Acessibilidade'
 import Fundamentos from './pages/Fundamentos'

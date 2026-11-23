@@ -4,16 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 const STORAGE_KEY = 'basquete-inclusivo-a11y'
 const WELCOME_KEY = 'basquete-inclusivo-welcome'
 
-// Lista de temas visuais disponíveis no site.
-// Cada tema ajusta a paleta de cores para melhorar legibilidade e contraste.
-
-export const THEMES = [
-  { id: 'default', label: 'Tema padrão', description: 'Cores originais do site, com fundo claro e laranja de basquete.' },
-  { id: 'dark', label: 'Modo escuro', description: 'Fundo escuro e texto claro para reduzir ofuscamento.' },
-  { id: 'high-contrast', label: 'Alto contraste', description: 'Texto preto em fundo branco, com amarelo nos destaques.' },
-  { id: 'high-contrast-bw', label: 'Alto contraste preto', description: 'Fundo preto e texto branco, máximo contraste.' },
-  { id: 'grayscale', label: 'Escala de cinza', description: 'Todas as cores em tons de cinza.' },
-]
+// A lista de temas fica em data/themes.js (as cores de cada um estão em styles/tokens.css).
 
 const DEFAULTS = {
   fontScale: 1,
@@ -45,7 +36,9 @@ function applyDocument(settings) {
   root.style.setProperty('--font-scale', String(settings.fontScale))  // Controla escala global de fonte
   root.classList.toggle('highlight-links', settings.highlightLinks)   // Destaca todos os links
   root.classList.toggle('highlight-focus', settings.highlightFocus)   // Destaca o foco do teclado
-  root.classList.toggle('reduce-motion', settings.reduceMotion)       // Desativa animações
+  // Desativa animações: pela escolha no painel OU pela preferência do sistema operacional
+  const systemReduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+  root.classList.toggle('reduce-motion', settings.reduceMotion || Boolean(systemReduce))
 }
 
 const AccessibilityContext = createContext(null)
@@ -74,30 +67,16 @@ export function AccessibilityProvider({ children }) {
     }
   }, [settings])
 
-  // Respeita a preferência do sistema operacional para reduzir movimento.
-  // Se o usuário configurou "Prefer reduced motion" no SO, ativa a classe automaticamente.
+  // Se a preferência do sistema operacional mudar com o site aberto, reaplica as classes
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const applyPref = () => {
-      if (mq.matches) {
-        document.documentElement.classList.add('reduce-motion')
-      }
-    }
-    applyPref()
-    mq.addEventListener('change', applyPref) // Atualiza se o usuário mudar a preferência do SO
-    return () => mq.removeEventListener('change', applyPref)
-  }, [])
+    const onChange = () => applyDocument(settings)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [settings])
 
-  // Inicializa e limpa a síntese de voz ao montar/desmontar o provider.
-  // Cancela qualquer fala em andamento quando o componente desmonta.
-  useEffect(() => {
-    const onEnd = () => setSpeechStatus('idle')
-    window.speechSynthesis?.addEventListener?.('voiceschanged', () => {})
-    return () => {
-      window.speechSynthesis?.cancel() // Para qualquer áudio ao sair da página
-      window.speechSynthesis?.removeEventListener?.('voiceschanged', onEnd)
-    }
-  }, [])
+  // Para qualquer leitura em andamento quando o site é fechado/desmontado
+  useEffect(() => () => window.speechSynthesis?.cancel(), [])
 
   // Atualiza um subset das configurações sem sobrescrever as demais
   const update = useCallback((patch) => {
@@ -178,7 +157,7 @@ export function AccessibilityProvider({ children }) {
     const parts = []
     // Seleciona títulos, parágrafos, itens de lista e legendas
     main.querySelectorAll('h1, h2, h3, p, li, figcaption, [data-speak]').forEach((el) => {
-      if (el.closest('button, .video-frame, nav')) return // Ignora elementos de interação
+      if (el.closest('button, nav, [aria-hidden="true"]')) return // Ignora botões, menus e enfeites
       const t = el.textContent?.replace(/\s+/g, ' ').trim()
       if (t) parts.push(t)
     })

@@ -1,46 +1,42 @@
-import PageTitle from '../components/PageTitle'
-import AudioReader from '../components/AudioReader'
-import ContentCard from '../components/ContentCard'
-import PlayerCard from '../components/PlayerCard'
-import { COMPETITIONS, PLAYERS } from '../data/content'
+import Page from '../components/layout/Page'
+import ContentCard from '../components/ui/ContentCard'
+import PlayerCard from '../components/ui/PlayerCard'
+import Section from '../components/ui/Section'
+import { COMPETITIONS, PLAYERS } from '../data/players'
 
-// Página de jogadores e competições.
-// Exibe grupos de jogadores (históricos, atuais e brasileiros) usando PlayerCard
-// e lista as principais competições do basquete usando ContentCard.
+const slug = (text) =>
+  text
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+
+// Jogadores (históricos, atuais e brasileiros) e as principais competições.
 export default function Jogadores() {
   return (
-    <main id="conteudo-principal" className="site-main page" tabIndex={-1}>
-      <PageTitle title="Jogadores e competições" />
-      <AudioReader />
-      <article>
-        <p className="kicker">Pessoas e torneios</p>
-        <h1>Jogadores e competições</h1>
-        <p className="lede">
-          O basquete é feito de equipes, mas algumas pessoas marcaram gerações. As informações
-          abaixo estão em texto e também podem ser ouvidas. As cores dos cards não são a única forma
-          de identificar cada grupo: use os títulos.
-        </p>
-
-        {PLAYERS.map((group) => (
-          <section key={group.group} aria-labelledby={`grupo-${group.group}`}>
-            <h2 id={`grupo-${group.group}`}>{group.group}</h2>
-            <div className="grid grid-3">
-              {group.people.map((player) => (
-                <PlayerCard key={player.name} player={player} />
-              ))}
-            </div>
-          </section>
-        ))}
-
-        <section aria-labelledby="competicoes">
-          <h2 id="competicoes">Principais competições</h2>
-          <div className="grid grid-2">
-            {COMPETITIONS.map((item) => (
-              <ContentCard key={item.title} icon="🏆" title={item.title} text={item.text} />
+    <Page
+      tabTitle="Jogadores e competições"
+      kicker="Pessoas e torneios"
+      title="Jogadores e competições"
+      lede="O basquete é feito de equipes, mas algumas pessoas marcaram gerações. As informações abaixo estão em texto e também podem ser ouvidas. As cores dos cards não são a única forma de identificar cada grupo: use os títulos."
+    >
+      {PLAYERS.map((group) => (
+        <Section key={group.group} id={`grupo-${slug(group.group)}`} title={group.group}>
+          <div className="grid grid-3">
+            {group.people.map((player) => (
+              <PlayerCard key={player.name} player={player} />
             ))}
           </div>
-        </section>
-      </article>
-    </main>
+        </Section>
+      ))}
+
+      <Section id="competicoes" title="Principais competições">
+        <div className="grid grid-2">
+          {COMPETITIONS.map((item) => (
+            <ContentCard key={item.title} icon="trophy" title={item.title} text={item.text} />
+          ))}
+        </div>
+      </Section>
+    </Page>
   )
 }

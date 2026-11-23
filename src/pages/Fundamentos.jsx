@@ -1,43 +1,43 @@
-import PageTitle from '../components/PageTitle'
-import AudioReader, { SpeakButton } from '../components/AudioReader'
-import VideoPlayer from '../components/VideoPlayer'
-import { FUNDAMENTALS } from '../data/content'
+import SpeakButton from '../components/a11y/SpeakButton'
+import Page from '../components/layout/Page'
+import Figure from '../components/ui/Figure'
+import { FUNDAMENTALS } from '../data/fundamentals'
 
-// Página de fundamentos do basquete.
-// Itera sobre os fundamentos do array FUNDAMENTALS e renderiza uma seção por habilidade,
-// com texto explicativo, imagem e botão de leitura em voz alta para cada item.
+// Fundamentos: índice com âncoras e uma seção por habilidade (texto, imagem e botão Ouvir).
 export default function Fundamentos() {
   return (
-    <main id="conteudo-principal" className="site-main page" tabIndex={-1}>
-      <PageTitle title="Fundamentos do basquete" />
-      <AudioReader />
-      <article>
-        <p className="kicker">Habilidades do jogo</p>
-        <h1>Fundamentos do basquete</h1>
-        <p className="lede">
-          Fundamentos são os movimentos básicos. Quem treina esses movimentos joga com mais
-          segurança, clareza e cooperação.
-        </p>
+    <Page
+      tabTitle="Fundamentos do basquete"
+      kicker="Habilidades do jogo"
+      title="Fundamentos do basquete"
+      lede="Fundamentos são os movimentos básicos. Quem treina esses movimentos joga com mais segurança, clareza e cooperação."
+    >
+      <nav className="toc" aria-label="Fundamentos nesta página">
+        <ul>
+          {FUNDAMENTALS.map((item) => (
+            <li key={item.id}>
+              <a href={`#${item.id}`}>{item.title}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
-        {FUNDAMENTALS.map((item) => (
-          <section key={item.id} aria-labelledby={item.id}>
+      {FUNDAMENTALS.map((item, i) => (
+        <section key={item.id} className={`section feature${i % 2 ? ' feature--flip' : ''}`} aria-labelledby={item.id}>
+          <div className="prose">
+            <p className="feature-number" aria-hidden="true">
+              {String(i + 1).padStart(2, '0')}
+            </p>
             <h2 id={item.id}>{item.title}</h2>
-            <div className="grid grid-2">
-              <div>
-                <p>{item.text}</p>
-                <SpeakButton
-                  text={`${item.title}. ${item.text}. Descrição da imagem: ${item.image.alt}`}
-                  label="Ouvir explicação"
-                />
-              </div>
-              <figure>
-                <img src={item.image.src} alt={item.image.alt} />
-                <figcaption>{item.image.alt}</figcaption>
-              </figure>
-            </div>
-          </section>
-        ))}
-      </article>
-    </main>
+            <p>{item.text}</p>
+            <SpeakButton
+              text={`${item.title}. ${item.text}.${item.image?.alt ? ` Descrição da imagem: ${item.image.alt}` : ''}`}
+              label="Ouvir explicação"
+            />
+          </div>
+          <Figure image={item.image} fallbackAlt={`Foto ilustrando o fundamento: ${item.title}`} caption={null} ratio="4 / 3" />
+        </section>
+      ))}
+    </Page>
   )
 }
